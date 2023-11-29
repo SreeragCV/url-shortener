@@ -30,7 +30,7 @@ module.exports.createShortUrl = async (req, res) => {
         expirationTime: expirationDate,
       });
       data.save();
-      return res.redirect(`/${urlCode}`)
+      return res.json(urlCode)
     }
   } catch (err) {
     return res.status(500).json({error: err});
