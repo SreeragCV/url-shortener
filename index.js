@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const {createShortUrl, getUrl} = require('./controllers/urls')
-const Url = require('./models/url')
 
 app.use(express.json())
 
@@ -14,8 +13,7 @@ then(() => {
     console.log('ERROR CONNECTING TO DATABSE');
 })
 
-app.post('/shorten', createShortUrl)
-
+app.post('/url', createShortUrl)
 app.get('/:shortid', getUrl)
 
 
