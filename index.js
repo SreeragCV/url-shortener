@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const {createShortUrl, getUrl, newUrl} = require('./controllers/urls')
+const {createShortUrl, getUrl} = require('./controllers/urls')
 
 app.use(express.json())
 

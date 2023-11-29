@@ -1,10 +1,6 @@
 const shortid = require("shortid");
 const Url = require("../models/url");
 
-module.exports.newUrl = (rreq, res) => {
-  res.render('new')
-}
-
 module.exports.createShortUrl = async (req, res) => {
   try {
     const { url } = req.body;
@@ -13,7 +9,7 @@ module.exports.createShortUrl = async (req, res) => {
     }
     const urlExists = await Url.findOne({ originalUrl: url });
     if (urlExists) {
-      return res.status(400).json({ error: "Entered URL Already Exists"});
+      return res.status(400).json({ error: "Entered URL Already Exists" });
     }
     const expirationDate = Date.now() + 24 * 60 * 60 * 1000;
     let urlCode;
@@ -30,10 +26,10 @@ module.exports.createShortUrl = async (req, res) => {
         expirationTime: expirationDate,
       });
       data.save();
-      return res.json(urlCode)
+      return res.json(urlCode);
     }
   } catch (err) {
-    return res.status(500).json({error: err});
+    return res.status(500).json({ error: err });
   }
 };
 
@@ -42,16 +38,16 @@ module.exports.getUrl = async (req, res) => {
     const { shortid } = req.params;
     const findUrl = await Url.findOne({ shortUrl: shortid });
     if (!findUrl) {
-      return res.status(400).json({error: "URL Not Found"});
+      return res.status(400).json({ error: "URL Not Found" });
     }
     const currentDate = new Date();
     const expirationDate = findUrl.expirationTime;
     if (expirationDate > currentDate) {
       return res.redirect(findUrl.originalUrl);
     } else {
-      return res.status(400).json({error: "The Date Has Expired"});
+      return res.status(400).json({ error: "The Date Has Expired" });
     }
   } catch (err) {
-    return res.status(500).json({error: err});
+    return res.status(500).json({ error: err });
   }
 };
