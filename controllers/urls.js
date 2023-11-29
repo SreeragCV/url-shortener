@@ -1,6 +1,10 @@
 const shortid = require("shortid");
 const Url = require("../models/url");
 
+module.exports.newUrl = (rreq, res) => {
+  res.render('new')
+}
+
 module.exports.createShortUrl = async (req, res) => {
   try {
     const { url } = req.body;
@@ -26,10 +30,10 @@ module.exports.createShortUrl = async (req, res) => {
         expirationTime: expirationDate,
       });
       data.save();
-      return res.json(urlCode);
+      return res.redirect(`/${urlCode}`)
     }
   } catch (err) {
-    res.status(500).json({error: err});
+    return res.status(500).json({error: err});
   }
 };
 
@@ -38,16 +42,16 @@ module.exports.getUrl = async (req, res) => {
     const { shortid } = req.params;
     const findUrl = await Url.findOne({ shortUrl: shortid });
     if (!findUrl) {
-      res.status(400).json({error: "URL Not Found"});
+      return res.status(400).json({error: "URL Not Found"});
     }
     const currentDate = new Date();
     const expirationDate = findUrl.expirationTime;
     if (expirationDate > currentDate) {
       return res.redirect(findUrl.originalUrl);
     } else {
-      res.status(400).json({error: "The Date Has Expired"});
+      return res.status(400).json({error: "The Date Has Expired"});
     }
   } catch (err) {
-    res.status(500).json({error: err});
+    return res.status(500).json({error: err});
   }
 };
