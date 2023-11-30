@@ -25,36 +25,34 @@ To connect and interact with the MongoDB database, run the following command:
 mongosh
 
 # API Usage
-1 GET /url/:id
-Description: Fetches the original URL associated with the given short URL identifier.
-Request: GET /url/U7OgKSPNt
-Response:
-Example Request: req.params.id = U7OgKSPNt
-Example Response: Your Short URL for https://google.com is U7OgKSPNt
+1 GET /url/:id <br>
+Description: Fetches the original URL associated with the given short URL identifier. <br>
+Request: GET /url/U7OgKSPNt <br>
+Response: <br>
+Example Request: req.params.id = U7OgKSPNt v
+Example Response: Your Short URL for https://google.com is U7OgKSPNt <br>
 
 
-2 GET /create-short-url
-Description: Renders the form for creating a short URL.
+2 GET /create-short-url <br>
+Description: Renders the form for creating a short URL. <br>
 (This endpoint is likely to serve an HTML page and may not follow the traditional request/response structure typical of APIs. You might render a form directly on a web page.)
 
-3 POST /url
-Description: Creates a short URL.
-Request:
-Example Request:
-json
-Copy code
+3 POST /url <br>
+Description: Creates a short URL. <br>
+Request: <br>
+Example Request: <br>
 {
     "url": "https://google.com"
-}
-Response:
-Example Response: Your Short URL for https://google.com is U7OgKSPNt
+} <br>
+Response: <br>
+Example Response: Your Short URL for https://google.com is U7OgKSPNt <br>
 
-4 GET /:id
-Description: Redirects to the original URL from the short URL.
-Request: GET /U7OgKSPNt
-Response:
-Example Request: req.params.id = U7OgKSPNt
-Example Response: Original URL of 'U7OgKSPNt' is google.com
+4 GET /:id <br>
+Description: Redirects to the original URL from the short URL. <br>
+Request: GET /U7OgKSPNt <br>
+Response: <br>
+Example Request: req.params.id = U7OgKSPNt <br>
+Example Response: Original URL of 'U7OgKSPNt' is google.com <br>
 
 # conclusion
 You're now equipped to run the application, interact with its API, and make any necessary configurations.
