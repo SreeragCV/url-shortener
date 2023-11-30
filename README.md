@@ -7,22 +7,20 @@ MongoDB: Install MongoDB to store and manage your application's data.
 Visual Studio Code (VSCode): Optional but recommended code editor for development.
 
 # Installation:
-Clone the repository:
-bash
-Copy code
-git clone <repository_url>
-cd <project_directory>
+Clone the repository: <br>
+git clone <repository_url> <br>
+cd <project_directory> <br>
 
-Install dependencies:
-npm install
-PORT=3000
-DATABASE_URL=mongodb://localhost:27017/tinyUrl
+Install dependencies: <br>
+npm install <br>
+PORT=3000 <br>
+DATABASE_URL=mongodb://localhost:27017/tinyUrl <br>
 
 # Running the Application
-To start the application, run the following command:
-npm start
-To connect and interact with the MongoDB database, run the following command:
-mongosh
+To start the application, run the following command: <br>
+npm start <br>
+To connect and interact with the MongoDB database, run the following command: <br>
+mongosh <br>
 
 # API Usage
 1 GET /url/:id <br>
